@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="SceneFuse-3D: Constructing a 3D Scene from a Single Image">
+        content="EvoScene: Self-Evolving 3D Scene Generation from a Single Image">
   <meta name="keywords" content="3D Scene Generation, 3D Town, Image to 3D">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SceneFuse-3D: Constructing a 3D Scene from a Single Image</title>
+  <title>EvoScene: Self-Evolving 3D Scene Generation from a Single Image</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -48,33 +48,31 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Constructing a 3D Scene from a Single Image</h1>
+          <h1 class="title is-1 publication-title">Self-Evolving 3D Scene Generation from a Single Image</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://kzzheng.github.io/">Kaizhi Zheng</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://www.linkedin.com/in/ruijian-zha/">Ruijian Zha</a><sup>3,4</sup>,</span>
+              <a href="https://www.yfan.site/">Yue Fan</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://g-jing.github.io/">Jing Gu</a><sup>1</sup>,</span>
             <span class="author-block">
               <a href="">Zishuo Xu</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://g-jing.github.io">Jing Gu</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://www.linkedin.com/in/cnjieyang">Jie Yang</a><sup>4</sup>,</span>
+              <a href="https://sheehan1230.github.io/">Xuehai He</a><sup>1</sup>,</span>
             <span class="author-block">
               <a href="https://eric-xw.github.io/">Xin Eric Wang</a><sup>1,2</sup>,</span>
           </div>
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>University of California, Santa Cruz,</span>
             <span class="author-block"><sup>2</sup>University of California, Santa Barbara,</span>
-            <span class="author-block"><sup>3</sup>Columbia University,</span>
-            <span class="author-block"><sup>4</sup>Utopai Studios</span>
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/2505.15765"
+                <a href="https://arxiv.org/pdf/"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -83,7 +81,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2505.15765"
+                <a href="https://arxiv.org/abs/"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -92,15 +90,15 @@
                 </a>
               </span>
               <!-- Code Link. -->
-              <!-- <span class="link-block">
-                <a href=""
+              <span class="link-block">
+                <a href="https://github.com/eric-ai-lab/EvoScene"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code (Releasing Soon)</span>
+                  <span>Code</span>
                   </a>
-              </span> -->
+              </span>
             </div>
 
           </div>
@@ -113,9 +111,9 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img id="teaser" width="150%" src="./static/images/3D_Town_teaser.png">
+      <img id="teaser" width="150%" src="./static/images/evoscene_teaser.png">
       <h2 class="subtitle has-text-centered">
-        <p style="font-family:Times New Roman">Figure 1. <b>3D Scene Generation from a Single Image.</b> Given a top-down reference image (center), <b>SceneFuse-3D</b> generates coherent and realistic 3D scenes that preserves geometry, texture, and layout compared to other state-of-the-art image-to-3D generation models. Our method also generalizes across diverse styles (right), producing high-quality outputs without any 3D training.</p>
+        <p style="font-family:Times New Roman">Figure 1. <b>Self-evolving 3D scene generation from a single image.</b> Given a single input photograph, <b>EvoScene</b> progressively builds a complete 3D scene through a virtuous cycle where geometry and appearance mutually refine each other. Our method synthesizes photorealistic novel views and produces high-quality 3D representations (Gaussians and meshes) with substantially improved angular coverage and completeness.</p>
       </h2>
     </div>
   </div>
@@ -130,9 +128,9 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p style="font-family:Times New Roman">
-            Acquiring detailed 3D scenes typically demands costly equipment, multi-view data, or labor-intensive modeling. Therefore, a lightweight alternative, generating complex 3D scenes from a single top-down image, plays an essential role in real-world applications. While recent 3D generative models have achieved remarkable results at the object level, their extension to full-scene generation often leads to inconsistent geometry, layout hallucinations, and low-quality meshes.
-In this work, we introduce <b>SceneFuse-3D</b>, a training-free framework designed to synthesize realistic and coherent 3D scenes from a single top-down view. Our method is grounded in two principles: region-based generation to improve image-to-3D alignment and resolution, and spatial-aware 3D inpainting to ensure global scene coherence and high-quality geometry generation. Specifically, we decompose the input image into overlapping regions and generate each using a pretrained 3D object generator, followed by a masked rectified flow inpainting process that fills in missing geometry while maintaining structural continuity. This modular design allows us to overcome resolution bottlenecks and preserve spatial structure without requiring 3D supervision or fine-tuning.
-Extensive experiments across diverse scenes show that SceneFuse-3D outperforms state-of-the-art baselines, including Trellis, Hunyuan3D-2, and TripoSG, in terms of geometry quality, spatial coherence, and texture fidelity. Our results demonstrate that high-quality 3D scene generation is achievable from a single image using a principled, training-free approach.
+            Generating high-quality, textured 3D scenes from a single image remains a fundamental challenge in vision and graphics. Recent image-to-3D generators recover reasonable geometry from single views, but their object-centric training limits generalization to complex, large-scale scenes with faithful structure and texture.
+We present <b>EvoScene</b>, a self-evolving, training-free framework that progressively reconstructs complete 3D scenes from single images. The key idea is combining the complementary strengths of existing models: geometric reasoning from 3D generation models and visual knowledge from video generation models. Through three iterative stages—Spatial Prior Initialization, Visual-guided 3D Scene Mesh Generation, and Spatial-guided Novel View Generation—<b>EvoScene</b> alternates between 2D and 3D domains, gradually improving both structure and appearance.
+Experiments on diverse scenes demonstrate that <b>EvoScene</b> achieves superior geometric stability, view-consistent textures, and unseen-region completion compared to strong baselines, producing ready-to-use 3D meshes for practical applications.
           </p>
         </div>
       </div>
@@ -154,14 +152,14 @@ Extensive experiments across diverse scenes show that SceneFuse-3D outperforms s
           <div class="column is-six-fifths">
             <div class="content has-text-justified">
               <ul>
-                <li>We propose SceneFuse-3D, a training-free framework for generating structured 3D scenes from a single top-down image, leveraging pretrained object-centric generators for zero-shot scene asset synthesis. </li>
-                <li>We develop a modular generation strategy that combines region-wise latent synthesis with spatial-aware 3D inpainting, effectively addressing resolution bottlenecks, image-geometry misalignment, and inter-region inconsistency. </li>
-                <li>We conduct comprehensive evaluations on diverse scenes and show that SceneFuse-3D outperforms state-of-the-art baselines (Trellis, Hunyuan3D-2, and TripoSG) in geometry quality, layout coherence, and texture realism under both human and GPT-4o-based assessments.</li>
+                <li>We propose <b>EvoScene</b>, a self-evolving framework for single-image 3D scene generation that progressively expands spatial coverage and refines complete textured meshes through iterative cycles between geometry and appearance across 2D and 3D domains. </li>
+                <li>We introduce a three-stage modular design that synergistically combines point-cloud spatial priors, SLAT-based 3D diffusion for mesh generation, and depth-conditioned video generation, enabling effective integration of geometric knowledge from 3D models with visual priors from video models. </li>
+                <li>Comprehensive experiments with human preference and GPT-4o-based evaluations on diverse scenes demonstrate that <b>EvoScene</b> achieves superior geometric completeness, layout coherence, and texture fidelity compared to state-of-the-art image-to-3D baselines, with ablations confirming substantial improvements over pose-only world-model variants.</li>
               </ul>
             </div>        
-            <img id="model" width="100%" src="./static/images/3D_Town_method.png">
+            <img id="model" width="100%" src="./static/images/evoscene_method.png">
             <h3 class="subtitle has-text-centered">
-              <p style="font-family:Times New Roman">Figure 2. Given a single top-down image, we first estimate a coarse scene structure via monocular depth and landmark extraction to initialize the scene latent (Spatial Prior Initialization). The scene is divided into overlapping regions for localized synthesis and progressively fused into a coherent global latent (Region-based Generation & Fusion). Each region is completed using a two-stage masked rectified flow pipeline with a sparse structure generator and a structured latent generator (Spatial-aware 3D Completion). The final 3D scene is decoded from the completed structured latent.</p>
+              <p style="font-family:Times New Roman">Figure 2. Our self-evolving framework consists of three coupled stages that form a virtuous cycle: (A) <b>Prior Initialization</b> extracts depth from 2D observations and back-projects to 3D point clouds, providing geometric constraints. (B) <b>Visual-guided 3D Scene Mesh Generation</b> uses a 3D diffusion model with test-time rendering optimization to complete the mesh guided by point cloud priors. (C) <b>Spatial-guided Novel View Generation</b> renders depth from the mesh to guide depth-conditioned video diffusion, synthesizing photorealistic multi-view images. These new views are converted back to point clouds (via depth re-estimation and multi-view filtering) and fed into the next iteration. This cycle progressively refines geometry and appearance to produce a complete 3D scene from a single input image.</p>
             </h3>   
 
 
@@ -180,17 +178,10 @@ Extensive experiments across diverse scenes show that SceneFuse-3D outperforms s
           <div class="column is-six-fifths">
             <div class="content has-text-justified">
               <p>
-                Qualitative examples from <b>SceneFuse-3D</b> and baselines on 3D scene asset generation from single images.  From the comparisons, we can find the <b>SceneFuse-3D</b> can provide more coherent and fine-grained 3D scenes than other baselines in various scene styles.
+                Qualitative examples from <b>EvoScene</b> and baselines on 3D scene asset generation from single images.  From the comparisons, we can find the <b>EvoScene</b> can provide more coherent and fine-grained 3D scenes than other baselines in various scene styles.
               </p>
             </div>        
-            <!-- <img id="model" width="100%" src="./static/images/3D_Town_comparision.png"> -->
-            <video id="demo-video" width="100%" controls>
-              <source src="./static/images/3DTown_demo.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-            <h3 class="subtitle has-text-centered">
-              <p style="font-family:Times New Roman">Demo video for comparisons with other baselines on 3D scene generation.</p>
-            </h3>
+            <img id="model" width="100%" src="./static/images/evoscene_comparsions.png">
         </div>
   </div>
 </section>
